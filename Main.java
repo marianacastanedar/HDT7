@@ -6,25 +6,29 @@ public class Main {
         Inventario inventario = new Inventario();
         Scanner sc = new Scanner(System.in);
 
+        System.out.print("Archivo CSV: ");
+        String archivo = sc.nextLine();
+        inventario.cargarCSV(archivo);
+
         while (true) {
             System.out.println("\n--- MENU --- \n Eliga la opcion que desee");
-            System.out.println("1. Cargar productos desde CSV");
-            System.out.println("2. Listar productos por SKU");
+            System.out.println("1. Listar productos por SKU");
+            System.out.println("2. Listar productos por nombre");
             System.out.println("3. Buscar producto por SKU");
             System.out.println("4. Buscar producto por nombre");
             System.out.println("5. Salir");
             System.out.print("Opción: ");
             int op = sc.nextInt();
-            sc.nextLine(); // limpiar
+            sc.nextLine();
+
+            
 
             switch (op) {
                 case 1:
-                    System.out.print("Archivo CSV: ");
-                    String archivo = sc.nextLine();
-                    inventario.cargarCSV(archivo);
+                    inventario.listarPorSKU();
                     break;
                 case 2:
-                    inventario.listarPorSKU();
+                    inventario.listarPorNombre();
                     break;
                 case 3:
                     System.out.print("SKU: ");
@@ -38,6 +42,7 @@ public class Main {
                     break;
                 case 5:
                     return;
+                
             }
         }
     }

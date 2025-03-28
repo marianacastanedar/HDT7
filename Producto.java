@@ -37,7 +37,28 @@ public class Producto {
         this.tallas = tallas;
     }
 
+    /* tenia este metodo pero se miraban feas las comillas asi que hice el otro, pero es lo mismo
     public String toString() {
         return sku + "\n nombre: " + nombre + " \n descripcion: "  + descripcion + " \n tallas: " + tallas;
+    } */
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n nombre: ").append(nombre).append("\n");
+        sb.append(" descripcion: ").append(descripcion).append("\n");
+        sb.append(" tallas: ");
+
+        for (String talla : tallas.keySet()) {
+            sb.append(talla).append("=").append(tallas.get(talla)).append(", ");
+        }
+
+        // Elimina la última coma y espacio
+        if (!tallas.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        return sb.toString();
     }
+
 }
